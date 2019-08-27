@@ -1,4 +1,4 @@
-package test;
+package com.bookstore.entity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
