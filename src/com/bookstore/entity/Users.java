@@ -5,8 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
 
 @Entity(name="users")
+@NamedQueries({
+	@NamedQuery(name="Users.findAll",query="SELECT u FROM users u ORDER BY u.fullName"),
+	@NamedQuery(name="User.countAll",query="SELECT Count(*) FROM users u")
+})
 public class Users {
 	@Column(name="user_id")
 	@Id
