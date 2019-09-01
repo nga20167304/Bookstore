@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,7 @@
 	<div align="center">
 		<h2>Users Manager</h2>
 		<h3>
-			<a href="">Create new User</a>
+			<a href="user_form.jsp">Create New User</a>
 		</h3>
 	</div>
 
@@ -33,7 +33,7 @@
 				<td>${user.email}</td>
 				<td>${user.fullName}</td>
 				<td>
-					<a href="">Edit</a> &nbsp;
+					<a href="edit_user?id=${user.userId}">Edit</a> &nbsp;
 					<a href="">Delete</a>
 				</td>
 			</tr>
