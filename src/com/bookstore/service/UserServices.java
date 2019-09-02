@@ -77,7 +77,7 @@ public class UserServices {
 		requestDispatcher.forward(request, response);
 	}
 	public void updateUser() throws ServletException, IOException {
-		int userId=Integer.parseInt(request.getParameter("userId"));
+		int userId=Integer.parseInt(request.getParameter("id"));
 		String email=request.getParameter("email");
 		String fullname=request.getParameter("fullname");
 		String password=request.getParameter("password");
@@ -87,7 +87,7 @@ public class UserServices {
 		Users userByEmail=userDAO.findByEmail(email);
 		
 		if(userByEmail != null && userByEmail.getUserId() != userById.getUserId()) {
-			String message="Could not update user.User with email "+email+" already exsits";
+			String message="Could not update user.User with email "+email+" already exists";
 			request.setAttribute("message", message);
 			
 			RequestDispatcher requestDispatcher=request.getRequestDispatcher("message.jsp");
@@ -99,6 +99,14 @@ public class UserServices {
 			String message="User has been updated successfully!";
 			listUser(message);
 		}
+		
+	}
+	public void deleteUser() throws ServletException, IOException {
+		int userId=Integer.parseInt(request.getParameter("id"));
+		userDAO.delete(userId);
+		
+		String message="User has been deleted successfully!";
+		listUser(message);
 		
 	}
 }
