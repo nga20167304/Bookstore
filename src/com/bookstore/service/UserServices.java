@@ -77,7 +77,7 @@ public class UserServices {
 		requestDispatcher.forward(request, response);
 	}
 	public void updateUser() throws ServletException, IOException {
-		int userId=Integer.parseInt(request.getParameter("id"));
+		int userId=Integer.parseInt(request.getParameter("userId"));
 		String email=request.getParameter("email");
 		String fullname=request.getParameter("fullname");
 		String password=request.getParameter("password");
