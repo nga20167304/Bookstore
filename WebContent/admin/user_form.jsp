@@ -18,31 +18,43 @@
 			<c:if test="${user == null }">
 				Create New User
 			</c:if>
-			
+
 		</h2>
 	</div>
 
 	<div align="center">
-		<form action="create_user" method="post" onsubmit="return validateFormInput()">
+		<c:if test="${user !=null }">
+			<form action="update_user" method="post"
+			onsubmit="return validateFormInput()">
+			<input type="hidden" name="userId" value="${user.userId }" />
+		</c:if>
+		<c:if test="${user == null }">
+			<form action="create_user" method="post"
+			onsubmit="return validateFormInput()">
+		</c:if>
 			<table>
 				<tr>
 					<td align="right">Email:</td>
-					<td align="left"><input type="text" id="email" name="email" size="20" value="${user.email}"/></td>
+					<td align="left"><input type="text" id="email" name="email"
+						size="20" value="${user.email}" /></td>
 				</tr>
 				<tr>
 					<td align="right">Full Name:</td>
-					<td align="left"><input type="text" id="fullname" name="fullname" size="20" value="${user.fullName}"/></td>
+					<td align="left"><input type="text" id="fullname"
+						name="fullname" size="20" value="${user.fullName}" /></td>
 				</tr>
 				<tr>
 					<td align="right">Password:</td>
-					<td align="left"><input type="password" id="password" name="password" size="20" value="${user.password}"/></td>
+					<td align="left"><input type="password" id="password"
+						name="password" size="20" value="${user.password}" /></td>
 				</tr>
-				<tr><td>&nbsp;</td></tr>
 				<tr>
-					<td colspan="2" align="center">
-						<input type="submit" value="Save"/>
-						<input type="button" value="Cancel" onclick="javascript:history.go(-1);"/>
-					</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit"
+						value="Save" /> <input type="button" value="Cancel"
+						onclick="javascript:history.go(-1);" /></td>
 				</tr>
 			</table>
 		</form>
@@ -51,22 +63,22 @@
 	<jsp:directive.include file="footer.jsp" />
 </body>
 <script type="text/javascript">
-	function validateFormInput(){
-		var email=document.getElementById("email");
-		var fullname=document.getElementById("fullname");
-		var password=document.getElementById("password");
-		
-		if(email.value.length==0){
+	function validateFormInput() {
+		var email = document.getElementById("email");
+		var fullname = document.getElementById("fullname");
+		var password = document.getElementById("password");
+
+		if (email.value.length == 0) {
 			alert("Email can't be blank");
 			email.focus();
 			return false;
 		}
-		if(fullname.value.length==0){
+		if (fullname.value.length == 0) {
 			alert("Full Name can't be blank");
 			fullname.focus();
 			return false;
 		}
-		if(password.value.length==0){
+		if (password.value.length == 0) {
 			alert("Password can't be blank");
 			password.focus();
 			return false;
