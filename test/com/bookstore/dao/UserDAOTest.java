@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 
@@ -87,7 +88,7 @@ public class UserDAOTest {
 		assertNull(user);
 	}
 	
-	@Test(expected=Exception.class)
+	@Test(expected=EntityNotFoundException.class)
 	public void testDeleteNonExistUsers() {
 		Integer userId=99;
 		userDAO.delete(userId);
@@ -106,6 +107,13 @@ public class UserDAOTest {
 	public void testCount() {
 		long totalUsers=userDAO.count();
 		assertEquals(totalUsers,11);
+	}
+	
+	@Test
+	public void testFindByEmail() {
+		String email="nga.dt167304@gmail.com";
+		Users user=userDAO.findByEmail(email);
+		assertNotNull(user);
 	}
 
 	@AfterClass

@@ -4,7 +4,7 @@
 			src="C:/Users/FPT/.eclipse/BookStoreWebsite/WebContent/images/BookstoreAdminLogo.png" />
 	</div>
 	<div>
-		Welcome,Admin | <a href="">Log out</a>
+		Welcome,Admin | <a href="logout">Log out</a>
 		<br/><br/>
 	</div>
 	<div>

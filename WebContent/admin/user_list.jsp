@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Manage User - Evergreen Bookstore Administration</title>
+<title>Manage Users - Evergreen Bookstore Administration</title>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
 
 
 	<div align="center">
-		<h2>Users Manager</h2>
+		<h2>Users Management</h2>
 		<h3>
 			<a href="user_form.jsp">Create New User</a>
 		</h3>
