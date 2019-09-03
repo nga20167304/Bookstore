@@ -5,7 +5,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Create New User</title>
+<title>
+	<c:if test="${user !=null }">Edit User</c:if> 
+	<c:if test="${user == null }">Create New User</c:if>
+</title>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -52,9 +55,9 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center">
-					<input type="submit"value="Save" /> 
-					<input type="button" value="Cancel" onclick="javascript:history.go(-1);" /></td>
+				<td colspan="2" align="center"><input type="submit"
+					value="Save" /> <input type="button" value="Cancel"
+					onclick="javascript:history.go(-1);" /></td>
 			</tr>
 		</table>
 		</form>

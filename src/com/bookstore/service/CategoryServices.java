@@ -62,4 +62,14 @@ public class CategoryServices {
 			listCategory(message);
 		}
 	}
+
+	public void editCategory() throws ServletException, IOException {
+		int categoryId = Integer.parseInt(request.getParameter("id"));
+		Category category = categoryDAO.get(categoryId);
+		request.setAttribute("category", category);
+		
+		String editPage="category_form.jsp";
+		RequestDispatcher requestDispatcher=request.getRequestDispatcher(editPage);
+		requestDispatcher.forward(request, response);
+	}
 }
