@@ -63,6 +63,20 @@ public class CategoryDAOTest extends BaseDAOTest{
 		long totalCategories=categoryDAO.count();
 		assertEquals(totalCategories, 2);
 	}
+	
+	@Test
+	public void testFindByName() {
+		String name="Java Core";
+		Category category = categoryDAO.findByName(name);
+		assertNotNull(category);
+	}
+	
+	@Test
+	public void testFindByNameNotFull() {
+		String name="Java Core 1";
+		Category category = categoryDAO.findByName(name);
+		assertNull(category);
+	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
