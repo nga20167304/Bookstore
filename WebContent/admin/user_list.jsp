@@ -6,13 +6,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Manage Users - Evergreen Bookstore Administration</title>
+<link rel="stylesheet" type="text/css" href="C:/Users/FPT/.eclipse/BookStoreWebsite/WebContent/css/style.css"  />
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
 
 
 	<div align="center">
-		<h2>Users Management</h2>
+		<h2 class="pageheading">Users Management</h2>
 		<h3>
 			<a href="user_form.jsp">Create New User</a>
 		</h3>
