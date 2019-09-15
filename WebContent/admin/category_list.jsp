@@ -6,7 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Manage Categories - Evergreen Bookstore</title>
-<link rel="stylesheet" type="text/css" href="C:/Users/FPT/.eclipse/BookStoreWebsite/WebContent/css/style.css"  />
+<link rel="stylesheet" type="text/css" href="../css/style.css"  />
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -37,7 +39,7 @@
 					<td>${category.categoryId}</td>
 					<td>${category.name}</td>
 					<td><a href="edit_category?id=${category.categoryId}">Edit</a>
-						&nbsp; <a href="javascript:confirmDelete(${category.categoryId})">Delete</a></td>
+						&nbsp; <a href="javascript:void(0);" class="deleteCategory" id="${category.categoryId}">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -46,11 +48,15 @@
 	<jsp:directive.include file="footer.jsp" />
 </body>
 <script>
-	function confirmDelete(categoryId) {
-		if (confirm('Are you sure you want to delete the category with ID '
-				+ categoryId + ' ?')) {
-			window.location = 'delete_category?id=' + categoryId;
-		}
-	}
+	$(document).ready(function() {
+		$(".deleteCategory").each(function() {
+			$(this).on("click",function() {
+				categoryId = $(this).attr("id");
+				if (confirm('Are you sure you want to delete the category with ID '+ categoryId + ' ?')) {
+					window.location = 'delete_category?id='+ categoryId;
+					}
+				});
+			});
+		});
 </script>
 </html>

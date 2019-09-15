@@ -6,7 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Manage Users - Evergreen Bookstore Administration</title>
-<link rel="stylesheet" type="text/css" href="C:/Users/FPT/.eclipse/BookStoreWebsite/WebContent/css/style.css"  />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -42,20 +44,26 @@
 					<td>${user.userId}</td>
 					<td>${user.email}</td>
 					<td>${user.fullName}</td>
-					<td><a href="edit_user?id=${user.userId}">Edit</a> &nbsp; 
-						<a href="javascript:confirmDelete(${user.userId})">Delete</a></td>
+					<td><a href="edit_user?id=${user.userId}">Edit</a> &nbsp; <a
+						href="javascript:void(0);" class="deleteUser" id="${user.userId}" >Delete</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
 
 	<jsp:directive.include file="footer.jsp" />
-</body>
+
 	<script>
-		function confirmDelete(userId){
-			if(confirm('Are you sure you want to delete the user with ID '+userId+' ?')){
-				window.location='delete_user?id='+userId;
-			}
-		}
+		$(document).ready(function() {
+			$(".deleteUser").each(function() {
+				$(this).on("click",function() {
+					userId = $(this).attr("id");
+					if (confirm('Are you sure you want to delete the user with ID '+ userId + ' ?')) {
+						window.location = 'delete_user?id='+ userId;
+						}
+					});
+				});
+			});
 	</script>
+</body>
 </html>

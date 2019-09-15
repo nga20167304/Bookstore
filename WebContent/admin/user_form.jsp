@@ -9,7 +9,9 @@
 	<c:if test="${user !=null }">Edit User</c:if> 
 	<c:if test="${user == null }">Create New User</c:if>
 </title>
-<link rel="stylesheet" type="text/css" href="C:/Users/FPT/.eclipse/BookStoreWebsite/WebContent/css/style.css"  />
+<link rel="stylesheet" type="text/css" href="../css/style.css"  />
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -28,13 +30,11 @@
 
 	<div align="center">
 		<c:if test="${user !=null }">
-			<form action="update_user" method="post"
-				onsubmit="return validateFormInput()">
+			<form action="update_user" method="post" id="userForm" >
 				<input type="hidden" name="userId" value="${user.userId }" />
 		</c:if>
 		<c:if test="${user == null }">
-			<form action="create_user" method="post"
-				onsubmit="return validateFormInput()">
+			<form action="create_user" method="post" id="userForm">
 		</c:if>
 		<table class="form">
 			<tr>
@@ -59,7 +59,7 @@
 				<td colspan="2" align="center">
 				<button type="submit">Save</button> &nbsp;&nbsp;&nbsp;
 					
-				<button onclick="javascript:history.go(-1);">Cancel</button>
+				<button id="cancelButton">Cancel</button>
 				</td>
 			</tr>
 		</table>
@@ -69,27 +69,29 @@
 	<jsp:directive.include file="footer.jsp" />
 </body>
 <script type="text/javascript">
-	function validateFormInput() {
-		var email = document.getElementById("email");
-		var fullname = document.getElementById("fullname");
-		var password = document.getElementById("password");
-
-		if (email.value.length == 0) {
-			alert("Email can't be blank");
-			email.focus();
-			return false;
-		}
-		if (fullname.value.length == 0) {
-			alert("Full Name can't be blank");
-			fullname.focus();
-			return false;
-		}
-		if (password.value.length == 0) {
-			alert("Password can't be blank");
-			password.focus();
-			return false;
-		}
-		return true;
-	}
+	$(document).ready(function(){
+		$("#userForm").validate({
+			rules:{
+				email:{
+					required:true,
+					email:true
+				},
+				fullname:"required",
+				password:"required",
+			},
+			messages:{
+				email:{
+					required:"Please entter email",
+					email:"Please enter an valid email address"
+				},
+				fullname:"Please enter full name",
+				password:"Please enter password"
+			}
+		});
+		
+		$("#cancelButton").click(function(){
+			history.go(-1);
+		});
+	});
 </script>
 </html>
